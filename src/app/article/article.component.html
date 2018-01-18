@@ -1,0 +1,59 @@
+<div class="writeArticle">
+  <div class="container">
+    <div class="page-header">
+      <div class="row">
+        <div class="title" class="col-lg-8 col-md-8">
+           <input type="text" placeholder="这里输入标题" class="form-control"/>
+        </div>
+        <div class="col-lg-4 col-md-4 publish">
+          <a class="btn btn-default btn-sm writer-btn" href="#">发布文章</a>
+        </div>
+      </div>
+    </div>
+    <div class="articleType">
+      <label class="checkbox-inline">
+        <input type="checkbox" id="java_check" value="JAVA学习"> JAVA学习
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="web_check" value="WEB前端"> WEB前端
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="tec_check" value="黑科技预言"> 黑科技预言
+      </label>
+      <label class="inline">
+        <a href="" class="btn" data-toggle="modal" data-target="#addArticleTypeModal"><i class="glyphicon glyphicon-plus"></i>添加新类别</a>
+      </label>
+    </div>
+    <div class="editor-article">
+      <app-editor></app-editor>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="addArticleTypeModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">添加类型</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="typename" class="col-sm-2 control-label">类型名称</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="typename" placeholder="文章类型">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary">确定</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

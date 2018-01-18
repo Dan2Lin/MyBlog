@@ -1,0 +1,67 @@
+.user-header-right li>a{
+  padding: 5px 10px;
+  width: 120px;
+  height: 38px;
+  line-height: 27px;
+  margin: 6px 5px 0 15px;
+  border: 1px solid rgba(236,97,73,.7);
+  border-radius: 20px;
+  font-size: 14px;
+  color: #ea6f5a;
+  background-color: transparent
+}
+.user-header-right li>a.writer-btn{
+  background: #ea6f5a;
+  color: #ffffff;
+}
+.ic-write{
+  margin-right: 6px;
+}
+
+.panel-primary{
+  border-color: #ea6f5a;
+}
+.panel-primary > .panel-heading {
+  color: #fff;
+  background-color: #ea6f5a;
+  border-color: #ea6f5a;
+}
+.panel-default {
+  border-color: #56789d;
+}
+.panel-default > .panel-heading {
+  color: #fff;
+  background-color: #56789d;
+  border-color: #56789d;
+}
+.panel-success{
+  border-color: darkseagreen;
+}
+.panel-success > .panel-heading {
+  color: #fff;
+  background-color: darkseagreen;
+  border-color: darkseagreen;
+}
+.panel-info{
+  border-color: lightblue;
+}
+.panel-info > .panel-heading {
+  color: #fff;
+  background-color: lightblue;
+  border-color: lightblue;
+}
+.table{
+  margin-bottom: 0px;
+}
+
+.glyphicon-exclamation-sign{
+  top: 3px;
+  right: 5px;
+  color: indianred;
+}
+.logo{
+  line-height: 48px;
+}
+td,th{
+  text-align: left;
+}

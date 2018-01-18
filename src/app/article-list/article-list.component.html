@@ -1,0 +1,35 @@
+<div class="article-list">
+  <div class="list-group" >
+    <a href="#" class="list-group-item" *ngFor="let item of articleList">
+      <h4 class="list-group-item-heading">{{item?.title}}</h4>
+      <div class="list-group-item-text">
+        <span class="inline label label-java">{{item?.articleTypeName}}</span>
+        <span class="inline">{{item?.publishTime*1000|date:'yyyy-MM-dd'}}</span>
+        <ul class="inline list-inline">
+          <li><a href="#">编辑</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#deleteArticleModal">删除</a></li>
+        </ul>
+      </div>
+    </a>
+  </div>
+
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="deleteArticleModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><i class="glyphicon glyphicon-exclamation-sign"></i>提示</h4>
+      </div>
+      <div class="modal-body">
+        <h5>确定要删除这篇文章嘛？好不容易写出来的呢~</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">确定</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+

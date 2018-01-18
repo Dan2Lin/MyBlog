@@ -1,0 +1,48 @@
+.sign-in{
+  height: 100%;
+  min-height: 750px;
+  text-align: center;
+  font-size: 14px;
+  background-color: #f1f1f1;
+  padding-bottom: 40px;
+}
+
+.main{
+  width: 400px;
+  margin: 60px auto 0;
+  padding: 50px 50px 50px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(0,0,0,.1);
+  vertical-align: middle;
+  display: inline-block;
+}
+.title{
+  font-family: -apple-system,SF UI Display,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+  margin-bottom: 50px;
+}
+.normal-title a{
+  font-weight: 700;
+  color: #ea6f5a;
+  border-bottom: 2px solid #ea6f5a;
+}
+.form-control{
+  height: 40px;
+}
+.mybtn{
+  width: 100%;
+  padding: 9px 18px;
+  border-radius: 20px;
+  background: #3194d0;
+  color: white;
+  border: none;
+  margin-top: 30px;
+}
+.error-tips{
+  text-align: left;
+  color: indianred;
+}
+.message{
+  display: none;
+  margin-top:20px;
+}

@@ -1,0 +1,8 @@
+.toolbar{
+  border: 1px solid #ccc;
+}
+#editor-content{
+  border: 1px solid #ccc;
+  height: 80%;
+  min-height: 400px;
+}

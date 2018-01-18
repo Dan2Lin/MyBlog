@@ -1,0 +1,286 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="logo" routerLink="/home">
+        <img src="../../assets/images/LOGO.png" alt="logo" width="90" height="30">
+      </a>
+    </div>
+    <form class="navbar-form navbar-left">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="请输入用户名或者ID">
+        <span class="input-group-btn">
+         <button class="btn btn-default" type="button">
+           <i class="glyphicon glyphicon-send"></i>
+         </button>
+      </span>
+      </div>
+    </form>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right user-header-right">
+        <li><a class="btn btn-default btn-sm writer-btn" href="#" data-toggle="modal" data-target="#addUserModal"><i class="ic-write glyphicon glyphicon-plus"></i>添加用户</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="user-main">
+  <div class="container">
+    <div class="panel panel-primary">
+      <div class="panel-heading">超级管理员</div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <div *ngIf="superAdminArry?.length < 1">
+            <td colspan="4">暂时还没有添加此类型的用户</td>
+          </div>
+          <div *ngIf="superAdminArry?.length > 0">
+            <table class="table">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>用户名</th>
+              <th>密码</th>
+              <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let superadmin of superAdminArry;let i = index">
+              <th scope="row">{{(i + 1)}}</th>
+              <td>{{superadmin.username}}</td>
+              <td>{{superadmin.password}}</td>
+              <td>
+                <ul class="inline list-inline">
+                  <li><a href="#" data-toggle="modal" data-target="#editUserModal">编辑</a></li>
+                  <li><a href="#" data-toggle="modal" data-target="#deleteUserModal">删除</a></li>
+                </ul>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-info">
+      <div class="panel-heading">管理员</div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <div *ngIf="adminArray?.length < 1">
+            <td colspan="4">暂时还没有添加此类型的用户</td>
+          </div>
+          <div *ngIf="adminArray?.length > 0">
+            <table class="table">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>用户名</th>
+              <th>密码</th>
+              <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let admin of adminArray;let i = index">
+              <th scope="row">{{(i + 1)}}</th>
+              <td>{{admin.username}}</td>
+              <td>{{admin.password}}</td>
+              <td>
+                <ul class="inline list-inline">
+                  <li><a href="#" data-toggle="modal" data-target="#editUserModal">编辑</a></li>
+                  <li><a href="#" data-toggle="modal" data-target="#deleteUserModal">删除</a></li>
+                </ul>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">操作员</div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <div *ngIf="operator?.length < 1">
+            <td colspan="4">暂时还没有添加此类型的用户</td>
+          </div>
+          <div *ngIf="operator?.length > 0">
+            <table class="table">
+              <thead>
+              <tr>
+                <th>#</th>
+                <th>用户名</th>
+                <th>密码</th>
+                <th>操作</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let oper of operator;let i = index">
+                <th scope="row">{{(i + 1)}}</th>
+                <td>{{oper.username}}</td>
+                <td>{{oper.password}}</td>
+                <td>
+                  <ul class="inline list-inline">
+                    <li><a href="#" data-toggle="modal" data-target="#editUserModal">编辑</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#deleteUserModal">删除</a></li>
+                  </ul>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-success">
+      <div class="panel-heading">临时用户</div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <div *ngIf="temporary?.length < 1">
+            <td colspan="4">暂时还没有添加此类型的用户</td>
+          </div>
+          <div *ngIf="temporary?.length > 0">
+            <table class="table">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>用户名</th>
+              <th>密码</th>
+              <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let tem of temporary;let i = index">
+              <th scope="row">{{(i + 1)}}</th>
+              <td>{{tem.username}}</td>
+              <td>{{tem.password}}</td>
+              <td>
+                <ul class="inline list-inline">
+                  <li><a href="#" data-toggle="modal" data-target="#editUserModal">编辑</a></li>
+                  <li><a href="#" data-toggle="modal" data-target="#deleteUserModal">删除</a></li>
+                </ul>
+              </td>
+            </tr>
+            </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">添加新用户</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="username" class="col-sm-2 control-label">用户名</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="username" placeholder="用户名">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="col-sm-2 control-label">密码</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="password" placeholder="密码">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="user-role" class="col-sm-2 control-label">用户类型</label>
+              <div class="col-sm-10 dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="user-role" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  用户类型
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="user-role">
+                  <li><a href="#">超级管理员</a></li>
+                  <li><a href="#">管理员</a></li>
+                  <li><a href="#">临时用户</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">编辑用户</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="edit-username" class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="edit-username" value="969990114@qq.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="edit-password" class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="edit-password" value="123456">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="edit-user-role" class="col-sm-2 control-label">用户类型</label>
+            <div class="col-sm-10 dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="edit-user-role" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                用户类型
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="user-role">
+                <li><a href="#">超级管理员</a></li>
+                <li><a href="#">管理员</a></li>
+                <li><a href="#">临时用户</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary">保存</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="deleteUserModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><i class="glyphicon glyphicon-exclamation-sign"></i>提示</h4>
+      </div>
+      <div class="modal-body">
+        <h5>确定要删除该用户吗？删除后不可以恢复哟~</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">确定</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,32 @@
+<div class="">
+  <div class="sign-in">
+    <div class="logo"></div>
+    <div class="main row">
+      <h4 class="title">
+        <div class="normal-title">
+          <a href="/sign_in">BOKE后台登录系统</a>
+        </div>
+      </h4>
+      <form class="col-md-12 col-large-12" #loginForm= "ngForm" (submit)="formSubmit(loginForm.value)" >
+        <div class="form-group">
+          <input ngModel type="text" class="form-control" id="username" placeholder="UserName" name="username" required #uname="ngModel">
+          <div class="error-tips" [hidden] = 'uname.valid || uname.pristine'>
+            请输入用户名
+          </div>
+        </div>
+        <div class="form-group">
+          <input ngModel type="password" class="form-control" id="password" placeholder="Password" name="password" required #password="ngModel">
+          <div class="error-tips" [hidden] = 'password.valid || password.pristine'>
+            请输入密码
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary mybtn">登录</button>
+
+        <div class="message">
+          <div class="error-tips loginError">登录失败,请仔细检查用户名密码是否正确</div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
