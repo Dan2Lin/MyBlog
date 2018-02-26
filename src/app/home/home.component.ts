@@ -8,7 +8,6 @@ import {ArticleService} from "../service/article-service/article.service";
 })
 export class HomeComponent implements OnInit {
   articleList:any;
-  loading:Boolean;
   constructor(private articleService: ArticleService) { }
 
   ngOnInit() {

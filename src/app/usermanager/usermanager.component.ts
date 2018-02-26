@@ -21,5 +21,4 @@ export class UsermanagerComponent implements OnInit {
       this.temporary = res.data.users.tempory;
     });
   }
-
 }

@@ -4,6 +4,7 @@ import {HomeComponent} from './home/home.component';
 import {UsermanagerComponent} from './usermanager/usermanager.component';
 import {ArticleComponent} from './article/article.component';
 import {LoginComponent} from './login/login.component';
+import {EditArticleComponent} from "./edit-article/edit-article.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'writeArticle',
     component: ArticleComponent,
+  },
+  {
+    path: 'editArticle',
+    component: EditArticleComponent,
   },
   {
     path: '**',

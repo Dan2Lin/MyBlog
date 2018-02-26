@@ -19,6 +19,10 @@ import {LoginService} from "./service/login-service/login.service";
 import {ArticleService} from "./service/article-service/article.service";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {UserService} from "./service/user-service/user.service";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {DialogModule} from "primeng/primeng";
+import * as $ from 'jquery';
+import { EditArticleComponent } from './edit-article/edit-article.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +36,16 @@ import {UserService} from "./service/user-service/user.service";
     HomeFooterComponent,
     UsermanagerComponent,
     ArticleComponent,
-    EditorComponent
+    EditorComponent,
+    EditArticleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    DialogModule
   ],
   providers: [
     LoginService,
@@ -48,7 +55,6 @@ import {UserService} from "./service/user-service/user.service";
       provide: LocationStrategy,
       useClass: HashLocationStrategy
     }
-
   ],
   bootstrap: [AppComponent]
 })

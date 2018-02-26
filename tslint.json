@@ -104,6 +104,7 @@
       }
     ],
     "typeof-compare": true,
+    "no-inferrable-types": false,
     "unified-signatures": true,
     "variable-name": false,
     "whitespace": [

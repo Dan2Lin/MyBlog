@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ArticleService} from "../service/article-service/article.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-article-list',
@@ -8,15 +9,55 @@ import {ArticleService} from "../service/article-service/article.service";
 })
 export class ArticleListComponent implements OnInit {
   @Input()
-  private articleList:any;
-  constructor(private articleService:ArticleService) { }
+  articleList:any;
+  constructor(
+    private articleService:ArticleService,
+    private router:Router
+  ) { }
   ngOnInit() {
     this.articleService.searchEvent.subscribe(
       params => {
         this.articleService.searchArticle(params).then(
-          result=> this.articleList = result.data.articles
+          result=> {
+            console.log("----article list----")
+            console.log(result.data.articles);
+            this.articleList = result.data.articles;
+          }
         );
       }
     );
   }
+  showModal(){
+    $('#deleteArticleModal').on('show.bs.modal', function (event) {
+      const aid = $(event.relatedTarget).data('articleid');
+      $(this).find('.article_id').text(aid);
+    });
+  }
+  delArticle() {
+    const aid = $(".article_id").text();
+    if(aid){
+      this.articleService.deleteArticle(aid)
+        .then(result => {
+           if(result.code === 0){
+             location.reload();
+           }
+        });
+    }
+  }
+  editArticle(item) {
+    console.log("edit article....");
+    const aid = item.aId;
+    console.log(aid);
+    if(aid){
+      /*this.articleService.getArticleById(aid)
+        .then(result => {
+           console.log("获得的数据....");
+           console.log(result);
+        });*/
+      this.articleService.editEvent.emit(aid);
+    }else{
+        console.log("aid is null");
+    }
+  }
+
 }

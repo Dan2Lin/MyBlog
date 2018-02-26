@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-/*import * as wangEditor from '../../../node_modules/wangeditor/release/wangEditor.js';*/
-
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {ArticleService} from "../service/article-service/article.service";
+import {EditorComponent} from "../editor/editor.component";
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -8,8 +9,88 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleComponent implements OnInit {
 
-  constructor() { }
+  titleArticle:string;
+  @Input()
+  private typeArticle:any;
+  private contentArticle:string;
+  private textArticle:string;
+  private typeCheckedId:string;
+  @ViewChild('editor')
+  private  editor:EditorComponent;
+  private display:boolean = false;
+  private tipMsg:string = "";
+  private isColse:boolean = false;
+  constructor(
+    private articleService: ArticleService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
+    console.log("----ArticleComponent ngOnInit called ---");
+    this.articleService.getAllArticleType()
+      .then(res=>this.typeArticle = res.data.articleTypes);
+  }
+  publishArticle() {
+    this.textArticle = this.getEditorText();
+    this.contentArticle = this.getEditorContent();
+    const title = this.titleArticle;
+    const typeCheckedId = this.typeCheckedId;
+    const contentArticle = this.contentArticle;
+    const textArticle = this.textArticle;
+    if(title==="" || !title){
+      this.isColse = true;
+      this.openModal("标题不能为空");
+      return;
+    }
+    if(typeCheckedId===""||!typeCheckedId){
+      this.isColse = true;
+      this.openModal("请选择文章类型");
+      return;
+    }
+    if(textArticle === "" ||!textArticle){
+      this.isColse = true;
+      this.openModal("内容不能为空");
+      return;
+    }
+    const param = {
+      title:this.titleArticle,
+      tId:this.typeCheckedId,
+      publishTime:new Date(),
+      content:this.contentArticle,
+      pageview:0
+    };
+    this.articleService.saveArticle(param)
+      .then(result=>{
+        this.isColse = false;
+        if(result.code === 0){
+          this.openModal("文章发布成功！");
+        }else{
+          this.openModal("文章发布失败！");
+        }
+      });
+  }
+  getTypeId(id:string,target) {
+    if(target.checked === true){
+      this.typeCheckedId = id;
+    }else{
+      this.typeCheckedId = "";
+    }
+  }
+  getEditorContent():string {
+    return this.editor.getEditorContent();
+  }
+  getEditorText():string {
+    return this.editor.getEditorText();
+  }
+  openModal(msg:string) {
+    this.display = true;
+    this.tipMsg = msg;
+  }
+  hideDialog() {
+    if(this.isColse){
+      this.display = false;
+    }else{
+      this.router.navigate(['/home']);
+    }
   }
 }

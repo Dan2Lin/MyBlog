@@ -8,7 +8,6 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class LoginService {
   constructor(private http: HttpClient, private router: Router) { }
-  dataSource:Observable<any>;
   doLogin(value) :Promise<any>{
     console.log("LoginService called...");
     const body = {

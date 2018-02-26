@@ -17,15 +17,9 @@ export class LoginComponent implements OnInit {
   formSubmit(value) {
     this.loginService.doLogin(value).then(data=>{
       if(data.code === 0){
-        /*this.articleService.getArticleList().then(res =>{
-          console.log(res);
-        })*/
         this.route.navigate(['/home']);
       }else{
         console.log("登录失败");
-        /*$("#username").val('').focus();
-        $("#password").val('');
-        $(".message").show();*/
       }
     });
   }

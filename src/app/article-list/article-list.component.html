@@ -6,8 +6,8 @@
         <span class="inline label label-java">{{item?.articleTypeName}}</span>
         <span class="inline">{{item?.publishTime*1000|date:'yyyy-MM-dd'}}</span>
         <ul class="inline list-inline">
-          <li><a href="#">编辑</a></li>
-          <li><a href="#" data-toggle="modal" data-target="#deleteArticleModal">删除</a></li>
+          <li><a routerLink="/editArticle" (click)="editArticle(item)">编辑</a></li>
+          <li><a href="#" data-toggle="modal"  attr.data-articleid="{{item.aId}}" (click)="showModal()" data-target="#deleteArticleModal">删除</a></li>
         </ul>
       </div>
     </a>
@@ -24,9 +24,10 @@
       </div>
       <div class="modal-body">
         <h5>确定要删除这篇文章嘛？好不容易写出来的呢~</h5>
+        <div class="article_id hidden"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">确定</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="delArticle()">确定</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
       </div>
     </div>

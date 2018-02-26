@@ -1,31 +1,28 @@
 <div class="writeArticle">
   <div class="container">
+    <p-dialog header="提示" [(visible)]="display" [width]="300" [modal] = "true" [positionTop]="25" (onHide) = hideDialog()>
+      {{tipMsg}}
+    </p-dialog>
     <div class="page-header">
       <div class="row">
-        <div class="title" class="col-lg-8 col-md-8">
-           <input type="text" placeholder="这里输入标题" class="form-control"/>
-        </div>
+          <div class="title" class="col-lg-8 col-md-8">
+            <input type="text" placeholder="这里输入标题" class="form-control" [(ngModel)]="titleArticle"/>
+          </div>
         <div class="col-lg-4 col-md-4 publish">
-          <a class="btn btn-default btn-sm writer-btn" href="#">发布文章</a>
+          <a class="btn btn-default btn-sm writer-btn" (click)="publishArticle()">发布文章</a>
         </div>
       </div>
     </div>
-    <div class="articleType">
-      <label class="checkbox-inline">
-        <input type="checkbox" id="java_check" value="JAVA学习"> JAVA学习
-      </label>
-      <label class="checkbox-inline">
-        <input type="checkbox" id="web_check" value="WEB前端"> WEB前端
-      </label>
-      <label class="checkbox-inline">
-        <input type="checkbox" id="tec_check" value="黑科技预言"> 黑科技预言
+    <div class="articleType" >
+      <label class="checkbox-inline" *ngFor="let atype of typeArticle">
+        <input type="checkbox" id="{{atype?.typeId}}" value="{{atype?.typeContent}}" (change)="getTypeId(atype?.typeId,$event.target)">{{atype?.typeContent}}
       </label>
       <label class="inline">
         <a href="" class="btn" data-toggle="modal" data-target="#addArticleTypeModal"><i class="glyphicon glyphicon-plus"></i>添加新类别</a>
       </label>
     </div>
     <div class="editor-article">
-      <app-editor></app-editor>
+      <app-editor #editor></app-editor>
     </div>
   </div>
 </div>
@@ -56,4 +53,3 @@
     </div>
   </div>
 </div>
-
