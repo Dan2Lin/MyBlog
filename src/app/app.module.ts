@@ -23,6 +23,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DialogModule} from "primeng/primeng";
 import * as $ from 'jquery';
 import { EditArticleComponent } from './edit-article/edit-article.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { EditArticleComponent } from './edit-article/edit-article.component';
     UsermanagerComponent,
     ArticleComponent,
     EditorComponent,
-    EditArticleComponent
+    EditArticleComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

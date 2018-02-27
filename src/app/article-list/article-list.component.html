@@ -1,18 +1,17 @@
 <div class="article-list">
   <div class="list-group" >
-    <a href="#" class="list-group-item" *ngFor="let item of articleList">
+    <a class="list-group-item" *ngFor="let item of articleList">
       <h4 class="list-group-item-heading">{{item?.title}}</h4>
       <div class="list-group-item-text">
         <span class="inline label label-java">{{item?.articleTypeName}}</span>
         <span class="inline">{{item?.publishTime*1000|date:'yyyy-MM-dd'}}</span>
         <ul class="inline list-inline">
-          <li><a routerLink="/editArticle" (click)="editArticle(item)">编辑</a></li>
+          <li><a (click)="editArticle(item)" class="edit-article-btn">编辑</a></li>
           <li><a href="#" data-toggle="modal"  attr.data-articleid="{{item.aId}}" (click)="showModal()" data-target="#deleteArticleModal">删除</a></li>
         </ul>
       </div>
     </a>
   </div>
-
 </div>
 
 <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="deleteArticleModal">

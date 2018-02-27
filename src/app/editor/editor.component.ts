@@ -21,7 +21,10 @@ export class EditorComponent implements OnInit {
   getEditorContent():string{
     return this.editor.txt.html();
   }
-  getEditorText():string{
+  getEditorText():string {
     return this.editor.txt.text();
+  }
+  setEditorContent(content):string {
+    return this.editor.txt.html(content);
   }
 }

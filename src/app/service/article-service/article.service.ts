@@ -40,6 +40,15 @@ export class ArticleService {
          return res;
       });
   }
+  updateArticle(param):Promise<any> {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:8081/blog/article/updateArticle',param)
+      .toPromise()
+      .then(res=>{
+        return res;
+      });
+  }
   deleteArticle(aid): Promise<any> {
     const headers = new HttpHeaders();
     const param = new HttpParams().set("aid",aid);

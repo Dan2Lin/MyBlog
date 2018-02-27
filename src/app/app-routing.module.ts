@@ -5,6 +5,7 @@ import {UsermanagerComponent} from './usermanager/usermanager.component';
 import {ArticleComponent} from './article/article.component';
 import {LoginComponent} from './login/login.component';
 import {EditArticleComponent} from "./edit-article/edit-article.component";
+import {TestComponent} from "./test/test.component";
 
 const routes: Routes = [
   {
@@ -24,8 +25,12 @@ const routes: Routes = [
     component: ArticleComponent,
   },
   {
-    path: 'editArticle',
+    path: 'editArticle/:aId',
     component: EditArticleComponent,
+  },
+  {
+    path: 'test',
+    component: TestComponent,
   },
   {
     path: '**',

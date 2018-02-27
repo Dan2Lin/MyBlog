@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ArticleService} from "../service/article-service/article.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-article-list',
@@ -12,7 +12,7 @@ export class ArticleListComponent implements OnInit {
   articleList:any;
   constructor(
     private articleService:ArticleService,
-    private router:Router
+    private router: Router,
   ) { }
   ngOnInit() {
     this.articleService.searchEvent.subscribe(
@@ -45,18 +45,11 @@ export class ArticleListComponent implements OnInit {
     }
   }
   editArticle(item) {
-    console.log("edit article....");
-    const aid = item.aId;
-    console.log(aid);
-    if(aid){
-      /*this.articleService.getArticleById(aid)
-        .then(result => {
-           console.log("获得的数据....");
-           console.log(result);
-        });*/
-      this.articleService.editEvent.emit(aid);
-    }else{
-        console.log("aid is null");
+    const aId = item.aId;
+    if(aId){
+       this.router.navigate(['/editArticle',aId]);
+    } else {
+       console.log("aid is null");
     }
   }
 
