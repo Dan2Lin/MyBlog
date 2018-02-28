@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit {
 
   getArticelList(){
     this.articleService.getArticleList().then(res =>{
+      console.log("-----------articleList------------");
+      console.log(res.data.articles);
       this.articleList = res.data.articles;
     });
   }

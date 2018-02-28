@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ArticleService} from "../service/article-service/article.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-article-list',
@@ -19,8 +19,6 @@ export class ArticleListComponent implements OnInit {
       params => {
         this.articleService.searchArticle(params).then(
           result=> {
-            console.log("----article list----")
-            console.log(result.data.articles);
             this.articleList = result.data.articles;
           }
         );
