@@ -43,4 +43,16 @@ export class UserService {
         return res;
       });
   }
+  searchUser(param): Promise<any> {
+    const headers = new HttpHeaders();
+    const search_input = new HttpParams().set("param",param);
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:8081/blog/user/searchUserByParam',search_input,{
+      headers:headers
+    })
+      .toPromise()
+      .then(res=>{
+         return res;
+      });
+  }
 }

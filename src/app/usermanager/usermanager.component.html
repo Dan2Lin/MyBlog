@@ -13,9 +13,9 @@
     </div>
     <form class="navbar-form navbar-left">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="请输入用户名或者ID">
+        <input type="text" class="form-control" id="search-user-input" placeholder="请输入用户名或者用户类型">
         <span class="input-group-btn">
-         <button class="btn btn-default" type="button">
+         <button class="btn btn-default" type="button" (click)="searchUser()">
            <i class="glyphicon glyphicon-send"></i>
          </button>
       </span>

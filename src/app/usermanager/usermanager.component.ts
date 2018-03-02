@@ -24,8 +24,6 @@ export class UsermanagerComponent implements OnInit {
 
   getUsers() {
     this.userService.getUsers().then(res=>{
-      console.log("------all users-------");
-      console.log(res);
       this.superAdminArry = res.data.users.super_admin;
       this.adminArray = res.data.users.admin;
       this.operator = res.data.users.operator;
@@ -37,6 +35,7 @@ export class UsermanagerComponent implements OnInit {
       this.userRole = res.data.userRoles;
     });
   }
+  /*添加用户时选择的用户类型*/
   selectUseRole(roletype,target) {
     const targetText = $(target).text();
     $("#user-role .utype-text").text(targetText);
@@ -74,5 +73,20 @@ export class UsermanagerComponent implements OnInit {
            this.getUsers();
          }
        });
+  }
+
+  searchUser() {
+    const searchUserInput = $("#search-user-input").val();
+    if(searchUserInput !== ""){
+      this.userService.searchUser(searchUserInput)
+        .then(res=>{
+          this.superAdminArry = res.data.users.super_admin;
+          this.adminArray = res.data.users.admin;
+          this.operator = res.data.users.operator;
+          this.temporary = res.data.users.tempory;
+        });
+    } else {
+       this.getUsers();
+    }
   }
 }

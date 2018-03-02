@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { HomeHeaderComponent } from './home-header/home-header.component';
-import { SearchComponent } from './search/search.component';
 import { HomeMainComponent } from './home-main/home-main.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { HomeFooterComponent } from './home-footer/home-footer.component';
@@ -31,7 +30,6 @@ import { TestComponent } from './test/test.component';
     LoginComponent,
     HomeComponent,
     HomeHeaderComponent,
-    SearchComponent,
     HomeMainComponent,
     ArticleListComponent,
     HomeFooterComponent,
