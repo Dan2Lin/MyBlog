@@ -26,9 +26,7 @@ export class ArticleComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log("----ArticleComponent ngOnInit called ---");
-    this.articleService.getAllArticleType()
-      .then(res=>this.typeArticle = res.data.articleTypes);
+    this.getAllArticleType();
   }
   publishArticle() {
     this.textArticle = this.getEditorText();
@@ -71,6 +69,9 @@ export class ArticleComponent implements OnInit {
   }
   getTypeId(id:string,target) {
     if(target.checked === true){
+      $(target).parent('label').siblings().children("input:checkbox").each(function (item) {
+         $(this).children("input:checkbox").attr("checked");
+      });
       this.typeCheckedId = id;
     }else{
       this.typeCheckedId = "";
@@ -92,5 +93,20 @@ export class ArticleComponent implements OnInit {
     }else{
       this.router.navigate(['/home']);
     }
+  }
+  getAllArticleType() {
+    this.articleService.getAllArticleType()
+      .then(result =>{
+        this.typeArticle = result.data.articleTypes;
+      });
+  }
+  addArticleType() {
+    const typename = $("#typename").val();
+    this.articleService.addArticleType(typename)
+      .then(res=>{
+          if(res.code === 0){
+            this.getAllArticleType();
+          }
+      });
   }
 }

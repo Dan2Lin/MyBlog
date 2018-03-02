@@ -7,18 +7,54 @@ import {UserService} from "../service/user-service/user.service";
   styleUrls: ['./usermanager.component.css']
 })
 export class UsermanagerComponent implements OnInit {
-  superAdminArry:String[];
-  adminArray:String[];
-  operator:String[];
-  temporary:String[];
-  constructor(private userService: UserService) { }
+  superAdminArry:string[];
+  adminArray:string[];
+  operator:string[];
+  temporary:string[];
+  userRole:any;
+  selectRoleType:any;
+  constructor(
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
+    this.getUsers();
+    this.getAllUserType();
+  }
+
+  getUsers() {
     this.userService.getUsers().then(res=>{
       this.superAdminArry = res.data.users.super_admin;
       this.adminArray = res.data.users.admin;
       this.operator = res.data.users.operator;
       this.temporary = res.data.users.tempory;
     });
+  }
+  getAllUserType() {
+    this.userService.getAllUserType().then(res=>{
+      this.userRole = res.data.userRoles;
+    });
+  }
+  selectUseRole(roletype,target) {
+    const targetText = $(target).text();
+    $("#user-role .utype-text").text(targetText);
+    this.selectRoleType = roletype;
+  }
+
+  saveUser() {
+    const username = $("#username").val();
+    const password = $("#password").val();
+    const roleType = this.selectRoleType;
+    const param = {
+      username:username,
+      password:password,
+      role:roleType
+    };
+    this.userService.addUser(param)
+      .then(res=> {
+        if(res.code === 0){
+          this.getUsers();
+        }
+      });
   }
 }

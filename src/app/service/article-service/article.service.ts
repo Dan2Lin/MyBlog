@@ -4,7 +4,6 @@ import 'rxjs/RX';
 @Injectable()
 export class ArticleService {
   searchEvent:EventEmitter<String> = new EventEmitter();
-  @Output() editEvent:EventEmitter<String> = new EventEmitter();
   constructor(private http:HttpClient) { }
   getArticleList():Promise<any> {
     return this.http.post('http://localhost:8081/blog/article/getArticles',null)
@@ -58,8 +57,6 @@ export class ArticleService {
     })
       .toPromise()
       .then(res=>{
-        console.log("-------delete article------");
-        console.log(res);
         return res;
       });
   }
@@ -74,5 +71,20 @@ export class ArticleService {
         return res;
       });
 
+  }
+
+  addArticleType(typename) :Promise<any> {
+    const headers = new HttpHeaders();
+    const param = {
+      "typeContent":typename
+    }
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:8081/blog/articleType/addArticleType',param,{
+      headers:headers
+    })
+      .toPromise()
+      .then(res=>{
+        return res;
+      });
   }
 }
