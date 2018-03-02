@@ -7,20 +7,8 @@ import {ArticleService} from "../service/article-service/article.service";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  articleList:any;
-  constructor(private articleService: ArticleService) { }
+  constructor() { }
 
   ngOnInit() {
-    console.log("-----ngOnInit called-----");
-    this.getArticelList();
   }
-
-  getArticelList(){
-    this.articleService.getArticleList().then(res =>{
-      console.log("-----------articleList------------");
-      console.log(res.data.articles);
-      this.articleList = res.data.articles;
-    });
-  }
-
 }

@@ -24,6 +24,8 @@ export class UsermanagerComponent implements OnInit {
 
   getUsers() {
     this.userService.getUsers().then(res=>{
+      console.log("------all users-------");
+      console.log(res);
       this.superAdminArry = res.data.users.super_admin;
       this.adminArray = res.data.users.admin;
       this.operator = res.data.users.operator;
@@ -56,5 +58,21 @@ export class UsermanagerComponent implements OnInit {
           this.getUsers();
         }
       });
+  }
+
+  showModal(uid){
+    $('#deleteUserModal').on('show.bs.modal', function () {
+      $(this).find('.user_id').text(uid);
+    });
+  }
+
+  deleteUser() {
+     const uid = $(".user_id").text();
+     this.userService.deleteUserById(uid)
+       .then(res=> {
+         if(res.code === 0){
+           this.getUsers();
+         }
+       });
   }
 }

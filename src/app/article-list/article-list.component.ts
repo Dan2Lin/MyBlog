@@ -8,13 +8,13 @@ import {Router} from "@angular/router";
   styleUrls: ['./article-list.component.css']
 })
 export class ArticleListComponent implements OnInit {
-  @Input()
-  articleList:any;
+  public articleList:any;
   constructor(
     private articleService:ArticleService,
     private router: Router,
   ) { }
   ngOnInit() {
+    this.getAllArticles();
     this.articleService.searchEvent.subscribe(
       params => {
         this.articleService.searchArticle(params).then(
@@ -31,13 +31,23 @@ export class ArticleListComponent implements OnInit {
       $(this).find('.article_id').text(aid);
     });
   }
+
+  getAllArticles() {
+    this.articleService.getArticleList()
+      .then(res=> {
+        if(res.code === 0){
+          this.articleList = res.data.articles;
+        }
+      });
+  }
+
   delArticle() {
     const aid = $(".article_id").text();
     if(aid){
       this.articleService.deleteArticle(aid)
         .then(result => {
            if(result.code === 0){
-             location.reload();
+             this.getAllArticles();
            }
         });
     }

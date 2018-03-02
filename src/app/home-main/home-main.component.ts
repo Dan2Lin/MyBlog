@@ -6,8 +6,6 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./home-main.component.css']
 })
 export class HomeMainComponent implements OnInit {
-  @Input()
-  articleList:String[];
   constructor() { }
 
   ngOnInit() {
