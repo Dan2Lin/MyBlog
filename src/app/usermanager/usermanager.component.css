@@ -68,3 +68,7 @@ td,th{
 .hidden{
   display: none;
 }
+.require-msg{
+  font-size: 11px;
+  color: indianred;
+}

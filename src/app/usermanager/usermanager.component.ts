@@ -46,6 +46,7 @@ export class UsermanagerComponent implements OnInit {
     const targetText = $(target).text();
     $("#user-role .utype-text").text(targetText);
     this.selectRoleType = roletype;
+    $(".roleType-msg").addClass("hidden");
   }
   // 保存新用户
   saveUser() {
@@ -57,9 +58,22 @@ export class UsermanagerComponent implements OnInit {
       password:password,
       role:roleType
     };
+    if(!username){
+      $(".username-msg").removeClass("hidden");
+      return false;
+    }
+    if(!password){
+      $(".password-msg").removeClass("hidden");
+      return false;
+    }
+    if(!roleType){
+      $(".roleType-msg").removeClass("hidden");
+      return false;
+    }
     this.userService.addUser(param)
       .then(res=> {
         if(res.code === 0){
+          this.hideAddModal("#addUserModal");
           this.getUsers();
         }
       });
@@ -69,6 +83,16 @@ export class UsermanagerComponent implements OnInit {
     $('#deleteUserModal').on('show.bs.modal', function () {
       $(this).find('.user_id').text(uid);
     });
+  }
+  // 显示添加新用户弹框
+  showAddModal(){
+    $('#addUserModal').on('show.bs.modal', function () {
+      $(this).find('#username').val("");
+      $(this).find('#password').val("");
+    });
+  }
+  hideAddModal(selector) {
+    $(selector).modal('hide');
   }
   // 用户列表的删除操作
   deleteUser() {
@@ -102,8 +126,16 @@ export class UsermanagerComponent implements OnInit {
     const editRoleTypeId = this.editRoleType;
     if(edit_uname === this.e_username && edit_password === this.e_password && edit_roleType === this.e_typename){
       alert("用户内容没有进行任何更新呐~");
-      return;
+      return false;
     }else{
+      if(!edit_uname){
+        $(".edit-username-msg").removeClass("hidden");
+        return false;
+      }
+      if(!edit_password){
+        $(".edit-password-msg").removeClass("hidden");
+        return false;
+      }
       const param = {
         uid:update_id,
         username:edit_uname,
@@ -113,6 +145,7 @@ export class UsermanagerComponent implements OnInit {
       this.userService.updateUser(param)
         .then(res=>{
           if(res.code === 0){
+            this.hideAddModal("#editUserModal");
             this.getUsers();
           }
         });

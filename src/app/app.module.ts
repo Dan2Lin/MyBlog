@@ -21,6 +21,7 @@ import {UserService} from "./service/user-service/user.service";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DialogModule} from "primeng/primeng";
 import * as $ from 'jquery';
+import * as bootstrap from "bootstrap";
 import { EditArticleComponent } from './edit-article/edit-article.component';
 import { TestComponent } from './test/test.component';
 
