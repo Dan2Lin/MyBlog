@@ -55,4 +55,16 @@ export class UserService {
          return res;
       });
   }
+  updateUser(param) :Promise<any> {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:8081/blog/user/updateUser',param,{
+      headers:headers
+    })
+      .toPromise()
+      .then(res=>{
+        return res;
+      });
+  }
+
 }

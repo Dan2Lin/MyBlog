@@ -54,7 +54,7 @@
               <td>{{superadmin.password}}</td>
               <td>
                 <ul class="inline list-inline">
-                  <li><a data-toggle="modal" data-target="#editUserModal">编辑</a></li>
+                  <li><a data-toggle="modal" data-target="#editUserModal" (click)="editUser(superadmin)">编辑</a></li>
                   <li><a data-toggle="modal" data-target="#deleteUserModal" (click)="showModal(superadmin.uid)">删除</a></li>
                 </ul>
               </td>
@@ -90,7 +90,7 @@
               <td>{{admin.password}}</td>
               <td>
                 <ul class="inline list-inline">
-                  <li><a href="#" data-toggle="modal" data-target="#editUserModal">编辑</a></li>
+                  <li><a href="#" data-toggle="modal" data-target="#editUserModal" (click)="editUser(admin)">编辑</a></li>
                   <li><a href="#" data-toggle="modal" data-target="#deleteUserModal" (click)="showModal(admin.uid)">删除</a></li>
                 </ul>
               </td>
@@ -125,7 +125,7 @@
                 <td>{{oper.password}}</td>
                 <td>
                   <ul class="inline list-inline">
-                    <li><a href="#" data-toggle="modal" data-target="#editUserModal">编辑</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#editUserModal" (click)="editUser(oper)">编辑</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#deleteUserModal" (click)="showModal(oper.uid)">删除</a></li>
                   </ul>
                 </td>
@@ -160,7 +160,7 @@
               <td>{{tem.password}}</td>
               <td>
                 <ul class="inline list-inline">
-                  <li><a href="#" data-toggle="modal" data-target="#editUserModal">编辑</a></li>
+                  <li><a href="#" data-toggle="modal" data-target="#editUserModal" (click)="editUser(tem)">编辑</a></li>
                   <li><a href="#" data-toggle="modal" data-target="#deleteUserModal" (click)="showModal(tem.uid)">删除</a></li>
                 </ul>
               </td>
@@ -229,32 +229,30 @@
           <div class="form-group">
             <label for="edit-username" class="col-sm-2 control-label">用户名</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="edit-username" value="969990114@qq.com">
+              <input type="text" class="form-control" id="edit-username" value="{{e_username}}">
             </div>
           </div>
           <div class="form-group">
             <label for="edit-password" class="col-sm-2 control-label">密码</label>
             <div class="col-sm-10">
-              <input type="password" class="form-control" id="edit-password" value="123456">
+              <input type="password" class="form-control" id="edit-password" value="{{e_password}}">
             </div>
           </div>
           <div class="form-group">
             <label for="edit-user-role" class="col-sm-2 control-label">用户类型</label>
             <div class="col-sm-10 dropdown">
               <button class="btn btn-default dropdown-toggle" type="button" id="edit-user-role" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                用户类型
+                <span class="edit-user-type">{{e_typename}}</span>
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="user-role">
-                <li><a href="#">超级管理员</a></li>
-                <li><a href="#">管理员</a></li>
-                <li><a href="#">临时用户</a></li>
+                <li class='dropdownLi' edit_id ="uRole.rId" *ngFor="let uRole of userRole;" (click)="editUserRole(uRole.rId,$event.target)"><a>{{uRole.rName}}</a></li>
               </ul>
             </div>
           </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-primary">保存</button>
+              <button type="submit" class="btn btn-primary" data-dismiss="modal" (click)="updateUser()">保存</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
             </div>
           </div>
