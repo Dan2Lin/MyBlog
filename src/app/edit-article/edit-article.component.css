@@ -1,0 +1,44 @@
+.writeArticle .form-control {
+  height: 50px;
+  font-size: 24px;
+  box-shadow:none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0px;
+  padding-left: 0px;
+}
+.writeArticle .page-header{
+  border-bottom: none;
+  padding-bottom: 0px;
+}
+.writeArticle .publish{
+  bottom: -6px;
+}
+.writeArticle .publish a{
+  padding: 5px 10px;
+  width: 90px;
+  height: 38px;
+  line-height: 27px;
+  margin: 6px 5px 0 15px;
+  border: 1px solid rgba(236,97,73,.7);
+  border-radius: 20px;
+  font-size: 14px;
+  color: #ea6f5a;
+  background-color: transparent;
+  float: right;
+}
+.writeArticle .publish a.writer-btn{
+  background: #ea6f5a;
+  color: #ffffff;
+}
+.ic-write{
+  margin-right: 6px;
+}
+.articleType{
+  margin-bottom: 20px;
+}
+/*.toolbar .w-e-menu{
+  z-index:0 !important;
+}*/
+

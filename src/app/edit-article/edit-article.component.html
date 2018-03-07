@@ -1,0 +1,25 @@
+<div class="writeArticle">
+  <div class="container">
+    <p-dialog header="提示" [(visible)]="display" [width]="300" [modal] = "true" [positionTop]="25" (onHide) = hideDialog()>
+      {{tipMsg}}
+    </p-dialog>
+    <div class="page-header">
+      <div class="row">
+        <div class="title" class="col-lg-8 col-md-8">
+          <input type="text" placeholder="这里输入标题" class="form-control" value ="{{articleDetail?.title}}" [(ngModel)]="titleArticle"/>
+        </div>
+        <div class="col-lg-4 col-md-4 publish">
+          <a class="btn btn-default btn-sm writer-btn" (click)="updateArticle(articleDetail?.aId)">发布文章</a>
+        </div>
+      </div>
+    </div>
+    <div class="articleType" >
+      <label class="checkbox-inline" *ngFor="let atype of typeArticle">
+           <input type="checkbox" id="{{atype?.typeId}}" name="aTypeCheckbox" value="{{atype?.typeContent}}" (change)="getTypeId(atype?.typeId,$event.target)" [checked]="atype?.typeId === articleDetail?.tId">{{atype?.typeContent}}
+        </label>
+    </div>
+    <div class="editor-article">
+      <app-editor #editor></app-editor>
+    </div>
+  </div>
+</div>
