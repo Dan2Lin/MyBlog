@@ -15,8 +15,7 @@ export class EditorComponent implements OnInit {
     const editortoolbar = this.el.nativeElement.querySelector('#editor-tool');
     const editorcontent = this.el.nativeElement.querySelector('#editor-content');
     this.editor = new wangEditor(editortoolbar, editorcontent);
-    // this.editor.customConfig.uploadImgShowBase64 = true;
-    this.editor.customConfig.uploadImgServer = '/uploadImage'
+    this.editor.customConfig.uploadImgServer = 'http://localhost:8081/blog/article/uploadImage';
     this.editor.create();
   }
   getEditorContent():string{
