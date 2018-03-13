@@ -9,7 +9,7 @@ export class UtilsService {
   uploadImage(param):Promise<any> {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:8081/blog/article/uploadImage',param,{
+    return this.http.post('/blog/article/uploadImage',param,{
       headers:headers
     })
       .toPromise()

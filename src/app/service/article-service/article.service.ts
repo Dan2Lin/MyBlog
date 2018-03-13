@@ -6,7 +6,7 @@ export class ArticleService {
   searchEvent:EventEmitter<String> = new EventEmitter();
   constructor(private http:HttpClient) { }
   getArticleList():Promise<any> {
-    return this.http.post('http://localhost:8081/blog/article/getArticles',null)
+    return this.http.post('/blog/article/getArticles',null)
       .toPromise()
       .then(res=>{
         return res;
@@ -16,7 +16,7 @@ export class ArticleService {
     const inputUser = new HttpParams().set("searchInput",param);
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    return this.http.post('http://localhost:8081/blog/article/searchArticles',inputUser,{
+    return this.http.post('/blog/article/searchArticles',inputUser,{
       headers:headers
     }).toPromise()
       .then(res=>{
@@ -24,7 +24,7 @@ export class ArticleService {
     });
   }
   getAllArticleType():Promise<any> {
-    return this.http.get('http://localhost:8081/blog/articleType/getAllArticleType')
+    return this.http.get('/blog/articleType/getAllArticleType')
       .toPromise()
       .then(res=>{
         return res;
@@ -33,7 +33,7 @@ export class ArticleService {
   saveArticle(param):Promise<any> {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:8081/blog/article/addArticle',param)
+    return this.http.post('/blog/article/addArticle',param)
       .toPromise()
       .then(res=>{
          return res;
@@ -42,7 +42,7 @@ export class ArticleService {
   updateArticle(param):Promise<any> {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:8081/blog/article/updateArticle',param)
+    return this.http.post('/blog/article/updateArticle',param)
       .toPromise()
       .then(res=>{
         return res;
@@ -52,7 +52,7 @@ export class ArticleService {
     const headers = new HttpHeaders();
     const param = new HttpParams().set("aid",aid);
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:8081/blog/article/deleteArticleById',param,{
+    return this.http.post('/blog/article/deleteArticleById',param,{
       headers:headers
     })
       .toPromise()
@@ -65,7 +65,7 @@ export class ArticleService {
     const headers = new HttpHeaders();
     const params = new HttpParams().set("aid",aid);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:8081/blog/article/getArticleById',{headers: headers, params: params})
+    return this.http.get('/blog/article/getArticleById',{headers: headers, params: params})
       .toPromise()
       .then(res=>{
         return res;
@@ -79,7 +79,7 @@ export class ArticleService {
       "typeContent":typename
     }
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:8081/blog/articleType/addArticleType',param,{
+    return this.http.post('/blog/articleType/addArticleType',param,{
       headers:headers
     })
       .toPromise()

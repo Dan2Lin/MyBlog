@@ -6,14 +6,14 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
   getUsers(): Promise<any> {
-   return this.http.get("http://localhost:8081/blog/user/getAllUsers")
+   return this.http.get("/blog/user/getAllUsers")
      .toPromise()
      .then(res=>{
        return res;
      });
   }
   getAllUserType(): Promise<any> {
-    return this.http.get("http://localhost:8081/blog/user/getAllUserRole")
+    return this.http.get("/blog/user/getAllUserRole")
       .toPromise()
       .then(res=>{
         return res;
@@ -23,7 +23,7 @@ export class UserService {
   addUser(param) :Promise<any> {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:8081/blog/user/addUser',param,{
+    return this.http.post('/blog/user/addUser',param,{
       headers:headers
     })
       .toPromise()
@@ -35,7 +35,7 @@ export class UserService {
     const headers = new HttpHeaders();
     const param = new HttpParams().set("id",uid);
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:8081/blog/user/deleteUserById',param,{
+    return this.http.post('/blog/user/deleteUserById',param,{
       headers:headers
     })
       .toPromise()
@@ -47,7 +47,7 @@ export class UserService {
     const headers = new HttpHeaders();
     const search_input = new HttpParams().set("param",param);
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:8081/blog/user/searchUserByParam',search_input,{
+    return this.http.post('/blog/user/searchUserByParam',search_input,{
       headers:headers
     })
       .toPromise()
@@ -58,7 +58,7 @@ export class UserService {
   updateUser(param) :Promise<any> {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:8081/blog/user/updateUser',param,{
+    return this.http.post('/blog/user/updateUser',param,{
       headers:headers
     })
       .toPromise()

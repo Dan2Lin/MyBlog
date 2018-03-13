@@ -9,13 +9,12 @@ import 'rxjs/add/operator/toPromise';
 export class LoginService {
   constructor(private http: HttpClient, private router: Router) { }
   doLogin(value) :Promise<any>{
-    console.log("LoginService called...");
     const body = {
       username: value.username,
       password: value.password
     };
 
-    return this.http.post('http://localhost:8081/blog/manager/login', body)
+    return this.http.post(`/blog/manager/login`, body)
       .toPromise()
       .then(res => res);
   }
