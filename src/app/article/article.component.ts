@@ -11,14 +11,14 @@ export class ArticleComponent implements OnInit {
 
   titleArticle:string;
   @Input()
-  private typeArticle:any;
+  public typeArticle:any;
   private contentArticle:string;
   private textArticle:string;
   private typeCheckedId:string;
   @ViewChild('editor')
   private  editor:EditorComponent;
-  private display:boolean = false;
-  private tipMsg:string = "";
+  public display:boolean = false;
+  public tipMsg:string = "";
   private isColse:boolean = false;
   constructor(
     private articleService: ArticleService,
