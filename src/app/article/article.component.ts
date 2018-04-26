@@ -45,7 +45,7 @@ export class ArticleComponent implements OnInit {
       this.openModal("请选择文章类型");
       return;
     }
-    if(textArticle === "" ||!textArticle){
+    if(contentArticle === "" ||!contentArticle){
       this.isColse = true;
       this.openModal("内容不能为空");
       return;
