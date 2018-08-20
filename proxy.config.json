@@ -1,6 +1,6 @@
 {
   "/blog/*":{
-     "target":"http://118.24.20.254:8080",
+     "target":"http://127.0.0.1:8081",
      "secure":false,
      "logLevel":"debug"
   }
